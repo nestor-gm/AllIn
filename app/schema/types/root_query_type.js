@@ -1,7 +1,7 @@
-import graphql       from 'graphl'
+const graphql = require('graphql')
+const { GraphQLObjectType, GraphQLID } = graphql
 import UserType      from './user_type'
 
-const { GraphQLObjectType, GraphQLID } = graphql
 
 
 const RootQueryType = new GraphQLObjectType({

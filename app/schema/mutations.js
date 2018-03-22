@@ -1,4 +1,4 @@
-import graphql from 'graphql'
+const graphql = require('graphql')
 import UserType from './types/user_type'
 import AuthService from '../services/auth'
 

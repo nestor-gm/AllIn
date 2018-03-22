@@ -10,7 +10,7 @@ const User = new Schema({
   wBets: Number
 })
 
-UserSchema.pre('save', function save(next) {
+User.pre('save', function save(next) {
   const user = this;
   if (!user.isModified('password')) { return next() }
   bcrypt.genSalt(10, (err, salt) => {
@@ -23,7 +23,7 @@ UserSchema.pre('save', function save(next) {
   })
 })
 
-UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
+User.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)
   })

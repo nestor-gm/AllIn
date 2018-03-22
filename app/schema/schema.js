@@ -1,5 +1,5 @@
-import graphql       from 'graphl'
-import RootQueryType from '.types/root_query_type'
+const graphql = require('graphql')
+import RootQueryType from './types/root_query_type'
 import mutation      from './mutations'
 
 

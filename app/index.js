@@ -4,7 +4,7 @@ import mongoose         from 'mongoose'
 import expressGraphQL   from 'express-graphql'
 import passport         from 'passport'
 import passportConfig   from './services/auth'
-import UserModel        from './app/models/user'
+import UserModel        from './models/user'
 import schema           from './schema/schema'
 
 const app = express()

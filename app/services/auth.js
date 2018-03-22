@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 import passport from 'passport'
+import User     from '../models/user.js'
 const LocalStrategy = require('passport-local').Strategy
 
-const User = mongoose.model('user')
 
 
 passport.serializeUser((user, done) => {
