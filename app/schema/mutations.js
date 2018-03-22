@@ -1,8 +1,7 @@
-const graphql = require('graphql')
-import UserType from './types/user_type'
-import AuthService from '../services/auth'
+import graphql,  { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
+import UserType                                                   from './types/user_type'
+import AuthService                                                from '../services/auth'
 
-const { GraphQLObjectType, GraphQLString, GraphQLInt } = graphql
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
