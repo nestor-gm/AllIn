@@ -1,0 +1,34 @@
+{
+  "name": "allin",
+  "version": "1.0.0",
+  "description": "demostracion de todas las tecnologias aprendidas",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "graphql",
+    "docker"
+  ],
+  "author": "nestor-gm",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.17.2"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "express-session": "^1.15.6",
+    "graphql": "^0.13.2",
+    "mongoose": "^5.0.11",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
