@@ -15,7 +15,7 @@
 
 <script>
     
-    import gql from 'graphql-tag'
+    import mutation from '../mutations/SignUp.js'
 
     export default {
         data() {
@@ -28,12 +28,7 @@
             signUp() {
                 self = this
                 this.$apollo.mutate({
-                    mutation: gql`mutation($name: String, $password: String) {
-                        signup(name: $name, password: $password) {
-                        id
-                        name
-                        }
-                    }`, 
+                    mutation, 
                     variables: {
                      name: self.name, 
                      password: self.password,
