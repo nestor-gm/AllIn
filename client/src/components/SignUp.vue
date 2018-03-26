@@ -6,7 +6,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input v-model="passord"type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
   <a class="btn btn-primary text-white" @click="signUp()">Sign Up </a>
 </form>
@@ -15,6 +15,8 @@
 
 <script>
     
+    import gql from 'graphql-tag'
+
     export default {
         data() {
             return {
@@ -24,7 +26,23 @@
         },
         methods: {
             signUp() {
-                console.log(this.name)
+                self = this
+                this.$apollo.mutate({
+                    mutation: gql`mutation($name: String, $password: String) {
+                        signup(name: $name, password: $password) {
+                        id
+                        name
+                        }
+                    }`, 
+                    variables: {
+                     name: self.name, 
+                     password: self.password,
+                    },
+                     }).then((data) => {
+                    console.log(data)
+                    }).catch((error) => {
+                    console.error(error)
+                })
             }
         }
     }
