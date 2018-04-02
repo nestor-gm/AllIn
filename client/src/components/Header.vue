@@ -9,11 +9,18 @@
       <li class="nav-item active">
          <router-link to="/home"> <a class="nav-link text-white">Home</a> </router-link>
       </li>
+     </ul>
+     <ul v-if="!user" class="navbar-nav">
       <li class="nav-item">
         <router-link to="/login"> <a class="nav-link  text-white">Login</a ></router-link>
       </li>
       <li>
-           <router-link to="/Signup"> <button class="btn btn-outline-light my-2 my-sm-0">Sign Up</button></router-link>
+        <router-link to="/Signup"> <button class="btn btn-outline-light my-2 my-sm-0">Sign Up</button></router-link>
+      </li>
+    </ul>
+    <ul v-else class="navbar-nav">
+      <li class="nav-item">
+        <router-link to="/logout"> <a class="nav-link  text-white">Log Out</a ></router-link>
       </li>
     </ul>
   </div>
@@ -21,6 +28,10 @@
 </template>
 <script>
     export default {
-      
+      computed:  {
+        user() {
+          return this.$store.getters.getUser
+        }
+      }
     }
 </script>

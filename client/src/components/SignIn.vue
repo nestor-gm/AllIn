@@ -34,7 +34,8 @@
                      password: self.password,
                     },
                      }).then((data) => {
-                    console.log(data)
+                    this.$store.commit('changeUser', self.name)
+                    this.$router.push('/')
                     }).catch((error) => {
                     console.error(error)
                 })

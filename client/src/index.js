@@ -6,6 +6,7 @@ import { ApolloClient }  from 'apollo-client'
 import { HttpLink }      from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo         from 'vue-apollo'
+import { store }         from './store/store'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,7 @@ const apolloProvider = new VueApollo({
 new Vue({
   el: '#app',
   router,
+  store,
   provide: apolloProvider.provide(),
   render: h => h(App)
 })

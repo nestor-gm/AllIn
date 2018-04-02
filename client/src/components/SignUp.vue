@@ -16,14 +16,7 @@
 <script>
     
     import mutation from '../mutations/SignUp.js'
-
     export default {
-        data() {
-            return {
-                name: '',
-                password: ''
-            }
-        },
         methods: {
             signUp() {
                 self = this
@@ -34,7 +27,8 @@
                      password: self.password,
                     },
                      }).then((data) => {
-                    console.log(data)
+                    this.$store.commit('changeUser', self.name)
+                    this.$router.push('/')
                     }).catch((error) => {
                     console.error(error)
                 })
