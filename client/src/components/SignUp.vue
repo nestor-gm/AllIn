@@ -58,7 +58,6 @@
                      role: self.user.role
                     },
                      }).then((data) => {
-                    this.$store.commit('changeUser', self.user)
                     this.$router.push('/')
                     }).catch((error) => {
                     console.error(error)

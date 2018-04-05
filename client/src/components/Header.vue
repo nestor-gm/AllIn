@@ -14,20 +14,22 @@
       <li class="nav-item">
         <router-link to="/login"> <a class="nav-link  text-white">Login</a ></router-link>
       </li>
-      <li>
-        <router-link to="/Signup"> <button class="btn btn-outline-light my-2 my-sm-0">Sign Up</button></router-link>
-      </li>
     </ul>
     <ul v-else class="navbar-nav">
       <li class="nav-item">
         <router-link to="/logout"> <a class="nav-link  text-white">Log Out</a ></router-link>
       </li>
     </ul>
-    <ul v-if="user.role==20" class="navbar-nav">
+    <ul v-if="user.role>=20" class="navbar-nav">
          <li class="nav-item">
         <router-link to="/bets"> <a class="nav-link  text-white">Bets</a ></router-link>
       </li>
     </ul>
+    <ul v-if="user.role==30" class="navbar-nav">
+     <li>
+        <router-link to="/Signup"> <button class="btn btn-outline-light my-2 my-sm-0">Sign Up</button></router-link>
+    </li>
+     </ul>
   </div>
 </nav>
 </template>

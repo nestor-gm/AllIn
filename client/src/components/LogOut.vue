@@ -4,6 +4,7 @@
 <script>
     
     import mutation from '../mutations/LogOut.js'
+
     export default {
            data() {
             return {

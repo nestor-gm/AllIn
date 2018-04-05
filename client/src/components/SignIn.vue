@@ -33,6 +33,7 @@
                      password: self.user.password,
                     },
                      }).then((data) => {
+                     console.log(data)
                      self.user.role =  data.data.login.role
                      this.$store.commit('changeUser', self.user)
                      this.$router.push('/')

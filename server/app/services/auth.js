@@ -62,4 +62,16 @@ function login({ name, password, req }) {
   })
 }
 
-module.exports = { signup, login }
+function update({name, nBets, wBets, req}) {
+  
+  return new Promise((resolve, reject) => {
+  User.findOneAndUpdate({name: name}, {$set: {nBet: nBets, wBets:wBets}}, function (err, user) {
+      resolve(user)
+  })
+  })
+
+
+}
+
+
+module.exports = { signup, login, update }

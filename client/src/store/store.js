@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        user: {name: '', role:''}
+        user: {name: '', role:'', nBets: 0, wBets: 0}
     }, 
     getters: {
         getUser: state => {
@@ -17,6 +17,13 @@ export const store = new Vuex.Store({
         changeUser: (state, user) => {
             state.user.name = user.name
             state.user.role = user.role 
+        }, 
+        wonBet:(state) => {
+            state.user.nBets++
+            state.user.wBets++
+        },
+        lostBet:(state) => {
+            state.user.nBets++
         }
     }
 })
