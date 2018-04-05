@@ -10,7 +10,7 @@
          <router-link to="/home"> <a class="nav-link text-white">Home</a> </router-link>
       </li>
      </ul>
-     <ul v-if="!user" class="navbar-nav">
+     <ul v-if="user.name.length == 0" class="navbar-nav">
       <li class="nav-item">
         <router-link to="/login"> <a class="nav-link  text-white">Login</a ></router-link>
       </li>
@@ -22,7 +22,9 @@
       <li class="nav-item">
         <router-link to="/logout"> <a class="nav-link  text-white">Log Out</a ></router-link>
       </li>
-      <li class="nav-item">
+    </ul>
+    <ul v-if="user.role==20" class="navbar-nav">
+         <li class="nav-item">
         <router-link to="/bets"> <a class="nav-link  text-white">Bets</a ></router-link>
       </li>
     </ul>
@@ -30,15 +32,7 @@
 </nav>
 </template>
 <script>
-    import query from '../queries/CurrentUser'
-
-
     export default {
-        data() {
-            return {
-                Prueba: query
-            }
-        },
       computed:  {
         user() {
           return this.$store.getters.getUser

@@ -5,17 +5,18 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        role: ''
+        user: {name: '', role:''}
     }, 
     getters: {
         getUser: state => {
-            return state.role
+            return state.user; 
         }
     },
 
     mutations: {
-        changeUser: (state, role) => {
-            state.role = role
+        changeUser: (state, user) => {
+            state.user.name = user.name
+            state.user.role = user.role 
         }
     }
 })
