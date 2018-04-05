@@ -2,7 +2,6 @@ import graphql,  { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 import UserType                                                   from './types/user_type'
 import AuthService                                                from '../services/auth'
 
-
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -11,11 +10,13 @@ const mutation = new GraphQLObjectType({
       args: {
         name: { type: GraphQLString },
         password: { type: GraphQLString },
+        role: { type: GraphQLInt },
         nBets: { type: GraphQLInt },
-        wBets: { type: GraphQLInt }
+        wBets: { type: GraphQLInt },
       },
-      resolve(parentValue, { name, password }, req) {
-        return AuthService.signup({ name, password, req })
+      resolve(parentValue, { name, password, role }, req) {
+        console.log("HOLAA")
+        return AuthService.signup({ name, password, role,  req })
       }
     },
     logout: {
@@ -35,7 +36,7 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { name, password }, req) {
         return AuthService.login({ name, password, req })
       }
-    }
+    },
   }
 })
 

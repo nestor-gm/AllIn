@@ -32,8 +32,8 @@ passport.use(new LocalStrategy({ usernameField: 'name' }, (name, password, done)
 }))
 
 
-function signup({ name, password, req }) {
-  const user = new User({ name, password, 'nBets' : 0, 'wBets': 0 })
+function signup({ name, password, role,  req }) {
+  const user = new User({ name, password, role,  'nBets' : 0, 'wBets': 0 })
   if (!name || !password) { throw new Error('You must provide a name and password.') }
 
   return User.findOne({ name })

@@ -1,13 +1,16 @@
 import mongoose from 'mongoose'
-import bcrypt   from 'bcrypt-nodejs'
+import bcrypt  from 'bcrypt-nodejs'
 import crypto   from 'crypto'
+
+
 const Schema = mongoose.Schema
 
 const User = new Schema({
-  name: String,
-  password: String,
+  name: { type: String, unique: true, lowercase: true },
+  password: { type: String},
+  role: {type: Number},
   nBets: Number, 
-  wBets: Number
+  wBets: Number,
 })
 
 User.pre('save', function save(next) {
@@ -28,6 +31,5 @@ User.methods.comparePassword = function comparePassword(candidatePassword, cb) {
     cb(err, isMatch)
   })
 }
-
 
 module.exports = mongoose.model('User', User)

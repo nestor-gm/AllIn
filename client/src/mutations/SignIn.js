@@ -5,6 +5,7 @@ export default gql`
     login(name: $name, password: $password) {
       id
       name
+      role
     }
   }
 `;

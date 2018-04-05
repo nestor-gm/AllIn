@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <a class="navbar-brand text-white" href="#">All in</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,12 +22,23 @@
       <li class="nav-item">
         <router-link to="/logout"> <a class="nav-link  text-white">Log Out</a ></router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/bets"> <a class="nav-link  text-white">Bets</a ></router-link>
+      </li>
     </ul>
   </div>
 </nav>
 </template>
 <script>
+    import query from '../queries/CurrentUser'
+
+
     export default {
+        data() {
+            return {
+                Prueba: query
+            }
+        },
       computed:  {
         user() {
           return this.$store.getters.getUser

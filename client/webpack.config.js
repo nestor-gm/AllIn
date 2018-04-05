@@ -3,6 +3,9 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
+  node: {
+    fs: 'empty'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',

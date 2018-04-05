@@ -2,7 +2,6 @@ import graphql, { GraphQLObjectType, GraphQLID } from 'graphql'
 import UserType                                  from './user_type'
 
 
-
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -11,7 +10,7 @@ const RootQueryType = new GraphQLObjectType({
       resolve(parentValue, args, req) {
         return req.user
       }
-    }
+    },
   }
 })
 
