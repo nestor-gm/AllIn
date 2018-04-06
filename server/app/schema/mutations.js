@@ -53,7 +53,7 @@ const mutation = new GraphQLObjectType({
         nBets: { type: GraphQLInt },
         wBets: { type: GraphQLInt }
       },
-      resolve(parentValue, args, req) {
+      resolve(parentValue, {name, nBets, wBets}, req) {
         return AuthService.update({ name, nBets, wBets, req })
       }
     }

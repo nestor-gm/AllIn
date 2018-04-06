@@ -63,9 +63,8 @@ function login({ name, password, req }) {
 }
 
 function update({name, nBets, wBets, req}) {
-  
   return new Promise((resolve, reject) => {
-  User.findOneAndUpdate({name: name}, {$set: {nBet: nBets, wBets:wBets}}, function (err, user) {
+  User.findOneAndUpdate({name: name}, {$set: {nBets: nBets, wBets:wBets}}, function (err, user) {
       resolve(user)
   })
   })

@@ -17,15 +17,16 @@
         </div>
     </div>
   <a class="btn btn-primary text-white" @click="bet()">Apostar </a>
-   <a class="btn btn-primary text-white" @click="update()">Update </a>
   </div>
 </template>
 
 
 <script>
 
-    import mutation from '../mutations/getBet.js'
-   
+    import apuesta from '../mutations/getBet.js'
+    import update from '../mutations/UpdateBets.js'
+
+
     export default {
         data() {
             return {
@@ -35,9 +36,10 @@
         },
         methods: {
             bet() {
-
+                
+                    self = this 
                     this.$apollo.mutate({
-                    mutation, 
+                    mutation: apuesta, 
                     variables: {
                     },
                      }).then((data) => {
@@ -50,7 +52,21 @@
                     }
                     }).catch((error) => {
                     console.error(error)
-                })    
+                })
+
+
+                  this.$apollo.mutate({
+                    mutation: update, 
+                    variables: {
+                        name: self.$store.getters.getUser.name,
+                        nBets: self.$store.getters.getUser.nBets,
+                        wBets: self.$store.getters.getUser.wBets
+                    },
+                     }).then((data) => {
+                        console.log(data)
+                    }).catch((error) => {
+                    console.error(error)
+                })
                 
             }
         }
