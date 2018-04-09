@@ -17,6 +17,7 @@
         </div>
     </div>
   <a class="btn btn-primary text-white" @click="bet()">Apostar </a>
+
   </div>
 </template>
 
@@ -25,6 +26,7 @@
 
     import apuesta from '../mutations/getBet.js'
     import update from '../mutations/UpdateBets.js'
+    import consulta from '../queries/getBet.js'
 
 
     export default {

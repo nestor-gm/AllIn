@@ -9,8 +9,9 @@ const User = new Schema({
   name: { type: String, unique: true, lowercase: true },
   password: { type: String},
   role: {type: Number},
-  nBets: Number, 
-  wBets: Number,
+  nBets: { type: Number, default: 0 },
+  wBets: { type: Number, default: 0 },
+  token: { type: String, default: null },
 })
 
 User.pre('save', function save(next) {

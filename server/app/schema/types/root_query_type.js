@@ -8,10 +8,16 @@ const RootQueryType = new GraphQLObjectType({
   fields: {
     user: {
       type: UserType,
-      resolve(parentValue, args, req) {
-        return req.user
+      resolve(parentValue, args, context) {
+        return context.request.user
       }
     },
+    bet: {
+      type: BetType,
+      resolve(parentValue, args, req) {
+        return BetService.coinFlip()
+      }
+    }
   }
 })
 

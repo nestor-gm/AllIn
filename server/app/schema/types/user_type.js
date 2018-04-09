@@ -6,6 +6,7 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     password: { type: GraphQLString },
+    token: { type: GraphQLString },
     role: { type: GraphQLInt },
     nBets: { type: GraphQLInt },
     wBets: { type: GraphQLInt }

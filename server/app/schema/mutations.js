@@ -3,6 +3,8 @@ import UserType                                                   from './types/
 import AuthService                                                from '../services/auth'
 import BetService                                                 from '../services/wolfram'
 import BetType                                                    from './types//bet_type'
+import AuthUserType                                                   from './types//auth_user_type'
+
 
 
 const mutation = new GraphQLObjectType({
@@ -17,32 +19,32 @@ const mutation = new GraphQLObjectType({
         nBets: { type: GraphQLInt },
         wBets: { type: GraphQLInt },
       },
-      resolve(parentValue, { name, password, role }, req) {
-        return AuthService.signup({ name, password, role,  req })
+      resolve(parentValue, { name, password, role }, context) {
+        return AuthService.signup({ name, password, role,  context })
       }
     },
     logout: {
       type: UserType,
-      resolve(parentValue, args, req) {
+      resolve(parentValue, args, context) {
         const { user } = req
         req.logout()
         return user
       }
     },
     login: {
-      type: UserType,
+      type: AuthUserType,
       args: {
         name: { type: GraphQLString },
         password: { type: GraphQLString }
       },
-      resolve(parentValue, { name, password }, req) {
-        return AuthService.login({ name, password, req })
+      resolve(parentValue, { name, password }, context) {
+        return AuthService.login({ name, password, context })
       }
     },
     getBet: {
       type: BetType, 
       args: {}, 
-      resolve(parentValue, args, req) {
+      resolve(parentValue, args, context) {
        return BetService.coinFlip()
       }
     },
@@ -53,8 +55,8 @@ const mutation = new GraphQLObjectType({
         nBets: { type: GraphQLInt },
         wBets: { type: GraphQLInt }
       },
-      resolve(parentValue, {name, nBets, wBets}, req) {
-        return AuthService.update({ name, nBets, wBets, req })
+      resolve(parentValue, {name, nBets, wBets}, context) {
+        return AuthService.update({ name, nBets, wBets, context })
       }
     }
   }

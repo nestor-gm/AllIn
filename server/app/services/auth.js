@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import passport from 'passport'
 import User     from '../models/user.js'
+import jwt      from './jwt.js'
 const LocalStrategy = require('passport-local').Strategy
 
 
@@ -20,7 +21,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new LocalStrategy({ usernameField: 'name' }, (name, password, done) => {
   User.findOne({ name: name.toLowerCase() }, (err, user) => {
     if (err) { return done(err) }
-    if (!user) { return done(null, false, 'Invalid Credentials') }
+    if (!user) { return done(null, false, 'Invalid Credentials3') }
     user.comparePassword(password, (err, isMatch) => {
       if (err) { return done(err) }
       if (isMatch) {
@@ -32,8 +33,8 @@ passport.use(new LocalStrategy({ usernameField: 'name' }, (name, password, done)
 }))
 
 
-function signup({ name, password, role,  req }) {
-  const user = new User({ name, password, role,  'nBets' : 0, 'wBets': 0 })
+function signup({ name, password, role,  context }) {
+  const user = new User({ name, password, role })
   if (!name || !password) { throw new Error('You must provide a name and password.') }
 
   return User.findOne({ name })
@@ -43,7 +44,7 @@ function signup({ name, password, role,  req }) {
     })
     .then(user => {
       return new Promise((resolve, reject) => {
-        req.logIn(user, (err) => {
+        context.request.logIn(user, (err) => {
           if (err) { reject(err) }
           resolve(user)
         })
@@ -52,12 +53,14 @@ function signup({ name, password, role,  req }) {
 }
 
 
-function login({ name, password, req }) {
+function login({ name, password, context }) {
   return new Promise((resolve, reject) => {
     passport.authenticate('local', (err, user) => {
       if (!user) { reject('Invalid credentials.') }
-
-      req.login(user, () => resolve(user))
+      var token = jwt.createToken(user)
+      User.findOneAndUpdate({name: name}, {$set: {token: token}}, function (err, dox) {})
+      let string = { token }
+      context.request.login(user, () => resolve(string))
     })({ body: { name, password } })
   })
 }
@@ -71,6 +74,7 @@ function update({name, nBets, wBets, req}) {
 
 
 }
+
 
 
 module.exports = { signup, login, update }
