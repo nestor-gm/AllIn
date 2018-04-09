@@ -65,16 +65,24 @@ function login({ name, password, context }) {
   })
 }
 
-function update({name, nBets, wBets, req}) {
-  return new Promise((resolve, reject) => {
-  User.findOneAndUpdate({name: name}, {$set: {nBets: nBets, wBets:wBets}}, function (err, user) {
-      resolve(user)
-  })
-  })
+async function update({name, nBets, wBets, context}) {
 
+   let token = context.request.headers.authorization 
+   if (token == null )  throw new Error('Token no existe')
+   let decode = await jwt.decodeToken(token)
+   let user = await User.findOne({name: decode})
+   if (user == null ) throw new Error('Usuario no existe')
+   let result = await User.findOne({name: decode, token: token})
+   if (result == null ) throw new Error('Token no coinciden')
+
+  return new Promise((resolve, reject) => {
+      User.findOneAndUpdate({name: name}, {$set: {nBets: nBets, wBets:wBets}}, function (err, user) {
+        resolve(user)
+      })
+  })
 
 }
 
 
 
-module.exports = { signup, login, update }
+module.exports = { signup, login, update} 
