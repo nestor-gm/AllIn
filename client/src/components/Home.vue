@@ -8,8 +8,6 @@
 <script>
 
       import query from '../queries/getAllUsers.js'
-      import gql from 'graphql-tag'
-
        export default {
         data() {
             return {
@@ -18,13 +16,7 @@
         },
         apollo: {
             prueba: {
-                query: gql`{		
-                            getAllUsers 
-                    {
-                        id
-                        name
-                    }
-                    }`,
+                query: query,
                 update(data) {
                 return data.getAllUsers
             }
