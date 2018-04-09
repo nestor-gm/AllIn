@@ -19,7 +19,7 @@
                      name: this.$store.getters.getUser.name
                     },
                      }).then((data) => {
-                     this.$store.commit('changeUser', self.user)
+                     this.$store.commit('destroySession')
                      this.$router.push('/')
                     }).catch((error) => {
                     console.error(error)

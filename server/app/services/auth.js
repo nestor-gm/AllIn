@@ -59,7 +59,7 @@ function login({ name, password, context }) {
       if (!user) { reject('Invalid credentials.') }
       var token = jwt.createToken(user)
       User.findOneAndUpdate({name: name}, {$set: {token: token}}, function (err, dox) {})
-      let string = { token }
+      let string = { token: token, role: user.role }
       context.request.login(user, () => resolve(string))
     })({ body: { name, password } })
   })

@@ -20,7 +20,7 @@
     export default {
         data() {
             return {
-              user : { name: '', password: '', role:'' }
+              user : { name: '', password: '', token:'' }
             }
         },
         methods: {
@@ -33,8 +33,9 @@
                      password: self.user.password,
                     },
                      }).then((data) => {
-                     console.log(data)
+                     self.user.token =  data.data.login.token
                      self.user.role =  data.data.login.role
+                     console.log(self.user)
                      this.$store.commit('changeUser', self.user)
                      this.$router.push('/')
                     }).catch((error) => {

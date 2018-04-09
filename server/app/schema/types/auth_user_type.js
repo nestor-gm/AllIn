@@ -3,7 +3,8 @@ import graphql,  { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } fro
 const AuthUserType = new GraphQLObjectType({
   name: 'AuthUserType',
   fields: {
-    token: { type: GraphQLString }
+    token: { type: GraphQLString },
+    role: { type: GraphQLString }
   }
 })
 
