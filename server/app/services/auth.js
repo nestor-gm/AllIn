@@ -68,7 +68,7 @@ function login({ name, password, context }) {
 async function update({name, nBets, wBets, context}) {
 
    let token = context.request.headers.authorization 
-   if (token == null )  throw new Error('Token no existe')
+   if (token == 'null' )  throw new Error('Token no existe')
    let decode = await jwt.decodeToken(token)
    let user = await User.findOne({name: decode})
    if (user == null ) throw new Error('Usuario no existe')
@@ -83,6 +83,23 @@ async function update({name, nBets, wBets, context}) {
 
 }
 
+async function getAllUsers(context) {
+  return User.find({})
+}
 
+async function deleteUser( {name, context})  {
 
-module.exports = { signup, login, update} 
+  let token = context.request.headers.authorization 
+  if (token == 'null' )  throw new Error('Token no existe')
+  let decode = await jwt.decodeToken(token)
+  let user = await User.findOne({name: decode})
+  if (user == null ) throw new Error('Usuario no existe')
+  let result = await User.findOne({name: decode, token: token})
+  if (result == null ) throw new Error('Token no coinciden')
+  let user_delete = await User.findOne({name: name})
+  if (user_delete.role > user.role )  throw new Error('No tienes permisos')
+  return await User.remove({name:name})
+  
+}
+
+module.exports = { signup, login, update, getAllUsers, deleteUser} 

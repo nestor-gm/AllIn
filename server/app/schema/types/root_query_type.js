@@ -23,7 +23,7 @@ const RootQueryType = new GraphQLObjectType({
     getAllUsers: {
       type:  new GraphQLList(UserType),
       resolve(parentValue, args, context) {
-        return User.find({})
+        return AuthService.getAllUsers(context)
       }
     }
   }

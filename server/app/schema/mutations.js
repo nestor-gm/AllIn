@@ -58,6 +58,15 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, {name, nBets, wBets}, context) {
         return AuthService.update({ name, nBets, wBets, context })
       }
+    },
+    deleteUser: {
+      type: UserType,
+      args: {
+        name: { type: GraphQLString }
+      },
+      resolve(parentValue, {name}, context) {
+        return AuthService.deleteUser({ name, context })
+      }
     }
   }
 })
