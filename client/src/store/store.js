@@ -15,10 +15,12 @@ export const store = new Vuex.Store({
 
     mutations: {
         changeUser: (state, user) => {
-            state.user.name = user.name
-            state.user.token = user.token
-            state.user.role = user.role 
+            state.user = user 
         }, 
+        updateBets:(state, bets) => {
+            state.user.nBets = bets.nBets
+            state.user.wBets = bets.wBets
+        },
         wonBet:(state) => {
             state.user.nBets++
             state.user.wBets++

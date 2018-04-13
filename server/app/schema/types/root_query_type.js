@@ -1,9 +1,9 @@
-import graphql, { GraphQLObjectType, GraphQLID, GraphQLList} from 'graphql'
-import UserType                                              from './user_type'
-import BetType                                               from './bet_type'
-import BetService                                            from '../../services/wolfram'
-import AuthService                                           from '../../services/auth'
-import User                                                  from '../../models/user.js'
+import graphql, { GraphQLObjectType, GraphQLID, GraphQLList, GraphQLString} from 'graphql'
+import UserType                                                             from './user_type'
+import BetType                                                              from './bet_type'
+import BetService                                                           from '../../services/wolfram'
+import AuthService                                                          from '../../services/auth'
+import User                                                                 from '../../models/user.js'
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -18,6 +18,16 @@ const RootQueryType = new GraphQLObjectType({
       type: BetType,
       resolve(parentValue, args, req) {
         return BetService.coinFlip()
+      }
+    },
+    getUser: {
+      type: UserType,
+      args: {
+        name: { type: GraphQLString }
+      }, 
+      resolve(parentValue, { name }, context) {
+        console.log(name)
+        return User.findOne({name: name})
       }
     },
     getAllUsers: {

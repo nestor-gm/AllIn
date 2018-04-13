@@ -7,11 +7,11 @@ import { HttpLink }                  from 'apollo-link-http'
 import { InMemoryCache }             from 'apollo-cache-inmemory'
 import VueApollo                     from 'vue-apollo'
 import { store }                     from './store/store'
-import { ApolloLink, concat, split } from 'apollo-link';
-
+import { ApolloLink, concat, split } from 'apollo-link'
+import BootstrapVue                  from 'bootstrap-vue'
 
 Vue.use(VueRouter)
-
+Vue.use(BootstrapVue)
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
