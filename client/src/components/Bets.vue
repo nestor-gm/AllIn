@@ -24,7 +24,7 @@
 
 <script>
 
-    import apuesta from '../mutations/getBet.js'
+    import query  from '../queries/getBet.js'
     import update from '../mutations/UpdateBets.js'
 
 
@@ -32,30 +32,28 @@
         data() {
             return {
              eleccion: '',
-             query: '',
+             getbet: '',
+            }
+        },
+         apollo: {
+                getbet: {
+                    query: query,
+                    update(data) {
+                    return data.bet.result
+                }
             }
         },
         methods: {
             bet() {
-                
-                    self = this 
-                    this.$apollo.mutate({
-                    mutation: apuesta, 
-                    variables: {
-                    },
-                     }).then((data) => {
-                    if(self.eleccion == data.data.getBet.result) {
+                    this.$apollo.queries.getbet.refetch()
+                    if(this.eleccion == this.getbet) {
                         console.log("Acierto")
                         this.$store.commit('wonBet')
                     } else {
                         this.$store.commit('lostBet')
                         console.log("Perdiste")
                     }
-                    }).catch((error) => {
-                    console.error(error)
-                })
-
-
+            
                   this.$apollo.mutate({
                     mutation: update, 
                     variables: {

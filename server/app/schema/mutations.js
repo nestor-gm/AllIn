@@ -41,13 +41,6 @@ const mutation = new GraphQLObjectType({
         return AuthService.login({ name, password, context })
       }
     },
-    getBet: {
-      type: BetType, 
-      args: {}, 
-      resolve(parentValue, args, context) {
-       return BetService.coinFlip()
-      }
-    },
     updateBets: {
       type: UserType,
       args: {

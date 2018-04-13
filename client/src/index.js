@@ -14,7 +14,6 @@ Vue.use(VueRouter)
 
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  // add the authorization to the headers
   operation.setContext({
     headers: {
       authorization: store.getters.getUser.token ||  null,

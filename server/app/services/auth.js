@@ -21,7 +21,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new LocalStrategy({ usernameField: 'name' }, (name, password, done) => {
   User.findOne({ name: name.toLowerCase() }, (err, user) => {
     if (err) { return done(err) }
-    if (!user) { return done(null, false, 'Invalid Credentials3') }
+    if (!user) { return done(null, false, 'Invalid Credentials') }
     user.comparePassword(password, (err, isMatch) => {
       if (err) { return done(err) }
       if (isMatch) {

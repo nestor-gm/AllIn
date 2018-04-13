@@ -15,7 +15,7 @@ const app = express()
 mongoose.connect('mongodb://localhost/allin')
 
 app.use(cors())
-app.use(session({resave: true, saveUninitialized: true , secret: 'cryptull'}))
+app.use(session({resave: true, saveUninitialized: true , secret: 'allin'}))
 app.use(passport.initialize())
 app.use(passport.session())
 
