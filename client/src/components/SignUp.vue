@@ -12,19 +12,19 @@
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Roles</legend>
       <div class="col-sm-10">
-        <div class="form-check">
+        <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="20" v-model="user.role">
           <label class="form-check-label" for="gridRadios1">
             Admin
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="10"  v-model="user.role">
           <label class="form-check-label" for="gridRadios2">
             User
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="0"  v-model="user.role">
           <label class="form-check-label" for="gridRadios3">
             Guest
@@ -33,7 +33,7 @@
       </div>
     </div>
   </fieldset>
-  <a class="btn btn-primary text-white" @click="signUp()">Sign Up </a>
+  <a class="btn btn-success text-white" @click="signUp()">Sign Up </a>
 </form>
 </template>
 

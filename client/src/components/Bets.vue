@@ -16,7 +16,7 @@
           </label>
         </div>
     </div>
-  <a class="btn btn-primary text-white" @click="bet()">Apostar </a>
+  <a class="btn btn-success text-white" @click="bet()">Apostar </a>
 
   </div>
 </template>

@@ -1,35 +1,31 @@
 <template>
-   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand text-white" href="#">All in</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-         <router-link to="/home"> <a class="nav-link text-white">Home</a> </router-link>
-      </li>
-     </ul>
-     <ul v-if="user.name.length == 0" class="navbar-nav">
-      <li class="nav-item">
-        <router-link to="/login"> <a class="nav-link  text-white">Login</a ></router-link>
-      </li>
-    </ul>
-    <ul v-else class="navbar-nav">
-      <li class="nav-item">
-        <router-link to="/logout"> <a class="nav-link  text-white">Log Out</a ></router-link>
-      </li>
-        <li class="nav-item">
-        <router-link to="/bets"> <a class="nav-link  text-white">Bets</a ></router-link>
-      </li>
-    </ul>
-    <ul v-if="user.role==30" class="navbar-nav">
-     <li>
-        <router-link to="/Signup"> <button class="btn btn-outline-light my-2 my-sm-0">Sign Up</button></router-link>
-    </li>
-     </ul>
+  
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal text-white">All in </h5>
+      <router-link to="/home"> <a class="p-2 text-white">Home</a> </router-link>
+      <div v-if="user.name.length == 0">
+           <router-link to="/login"> <a class="p-2 text-white">Log in </a> </router-link>
+      </div>
+      <div v-else>
+        <div class="btn-group">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user.name }}
+          </button>
+        <div class="dropdown-menu">
+          <router-link to="/logout"> <a class="dropdown-item">Exit </a></router-link>
+          <router-link to="/bets"> <a class="dropdown-item">Bets </a></router-link>
+          <div v-if="user.role==30">
+          <router-link to="/Signup"> <a class="dropdown-item">Sign up </a></router-link>
+          </div>
+        </div>
+        </div>
+      </div>
+  
   </div>
-</nav>
+
+
+
+
 </template>
 <script>
     export default {

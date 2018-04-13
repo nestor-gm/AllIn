@@ -8,7 +8,7 @@
     <label for="exampleInputPassword1">Password</label>
     <input v-model="user.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  <a class="btn btn-primary text-white" @click="signIn()">Sign In </a>
+  <a class="btn btn-success text-white" @click="signIn()">Sign In </a>
 </form>
 </template>
 
