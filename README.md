@@ -1,4 +1,4 @@
-#All in 
+# All in
 
 Tecnologías aprendidas hasta el momento
 
@@ -18,14 +18,14 @@ Tecnologías aprendidas hasta el momento
 * Containerization platform [Docker](https://www.docker.com/)
 
 
-###Link FrontEnd Container & BackEnd Container
+##### Link FrontEnd Container & BackEnd Container
 
 ```
-docker-compose build 
+docker-compose build
 ```
 
 
-### Launch Full App
+##### Launch Full App
 
 ```
 docker-compose up
