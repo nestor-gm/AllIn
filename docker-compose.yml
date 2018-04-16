@@ -1,13 +1,13 @@
 version: "2"
 services:
   web:
-    build: ./server
+    image: server_web
     ports:
       - "4000:4000"
     links:
       - mongo
   client: 
-    build: ./client
+    image: client
     ports:
       - "3000:3000"
   mongo:
