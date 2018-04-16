@@ -26,7 +26,6 @@ const RootQueryType = new GraphQLObjectType({
         name: { type: GraphQLString }
       }, 
       resolve(parentValue, { name }, context) {
-        console.log(name)
         return User.findOne({name: name})
       }
     },

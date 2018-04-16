@@ -12,7 +12,7 @@ import cors              from 'cors'
 
 
 const app = express()
-mongoose.connect('mongodb://localhost/allin')
+mongoose.connect("mongodb://mongo/allin")
 
 app.use(cors())
 app.use(session({resave: true, saveUninitialized: true , secret: 'allin'}))
