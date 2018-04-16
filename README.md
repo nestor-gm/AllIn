@@ -15,4 +15,15 @@ Tecnologías aprendidas hasta el momento
 
 * Query Language [GraphQL](https://github.com/facebook/graphql)
 * Json Web Token ( Standard Security ) [JWT](https://github.com/auth0/node-jsonwebtoken)
-* In progress [Docker](https://www.docker.com/)
+* Containerization platform [Docker](https://www.docker.com/)
+
+
+```
+docker-compose build 
+(Link FrontEnd Container & BackEnd Container)
+```
+
+```
+docker-compose up
+(Launch Full App)
+```
