@@ -26,20 +26,20 @@ cd client && docker build -t client .
 ```
 
 
-##### Montar Contenedor Back End
+##### Montar Contenedor Back End (graphQL endpoint: http://localhost:4000/graphql)
 
 ```
 cd server && docker-compose build 
 ```
 
 
-##### Montar aplicacion 
+##### Montar aplicacion (Directorio raiz)
 
 ```
 docker-compose build 
 ```
 
-##### Acceder aplicacion
+##### Acceder aplicacion (http://0.0.0.0:3000/)
 
 ```
 docker-compose up -d 
